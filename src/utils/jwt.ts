@@ -30,18 +30,18 @@ export const generateRefreshToken = async (email: string): Promise<string> => {
   }
 };
 
-export const verifyAccessToken = async (token: string): Promise<jwt.JwtPayload> => {
+export const verifyAccessToken = async (accessToken: string): Promise<jwt.JwtPayload> => {
   try {
-    const payload: jwt.JwtPayload = (await jwt.verify(token, ACCESS_TOKEN_SECRET_KEY!)) as jwt.JwtPayload;
+    const payload: jwt.JwtPayload = (await jwt.verify(accessToken, ACCESS_TOKEN_SECRET_KEY!)) as jwt.JwtPayload;
     return payload;
   } catch (error) {
     throw ApiError.unauthorized(error.message);
   }
 };
 
-export const verifyRefreshToken = async (token: string): Promise<jwt.JwtPayload> => {
+export const verifyRefreshToken = async (refreshToken: string): Promise<jwt.JwtPayload> => {
   try {
-    const payload: jwt.JwtPayload = (await jwt.verify(token, REFRESH_TOKEN_SECRET_KEY!)) as jwt.JwtPayload;
+    const payload: jwt.JwtPayload = (await jwt.verify(refreshToken, REFRESH_TOKEN_SECRET_KEY!)) as jwt.JwtPayload;
     return payload;
   } catch (error) {
     throw ApiError.unauthorized(error.message);
