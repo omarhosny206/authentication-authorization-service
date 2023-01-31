@@ -7,7 +7,7 @@ import * as userService from "../services/user-service";
 
 dotenv.config();
 
-async function verify(accessToken: string, refreshToken: string, profile: Profile, done: VerifyCallback): Promise<void> {
+export const verify = async (accessToken: string, refreshToken: string, profile: Profile, done: VerifyCallback): Promise<void> => {
   const email: string = profile?.emails?.[0].value || "";
   const firstName: string = profile?.name?.givenName || "";
   const lastName: string = profile?.name?.familyName || "";
@@ -19,16 +19,16 @@ async function verify(accessToken: string, refreshToken: string, profile: Profil
   }
 
   return done(null, existingUser);
-}
+};
 
-const startegyOptions: StrategyOptions = {
+const strategyOptions: StrategyOptions = {
   clientID: process.env.GOOGLE_CLIENT_ID!,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
   callbackURL: process.env.GOOGLE_CALLBACK!,
 };
 
-const googleStrategy: GoogleStrategy = new GoogleStrategy(startegyOptions, verify);
+const googleStrategy: GoogleStrategy = new GoogleStrategy(strategyOptions, verify);
 
-export function start(): void {
+export const start = (): void => {
   passport.use(googleStrategy);
-}
+};
