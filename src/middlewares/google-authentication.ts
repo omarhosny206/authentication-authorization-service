@@ -1,8 +1,9 @@
 import axios from "axios";
+import * as dotenv from "dotenv";
+
 import IUser from "../interfaces/user-interface";
 import * as userService from "../services/user-service";
 import ApiError from "../utils/api-error";
-import * as dotenv from "dotenv";
 import * as jwt from "../utils/jwt";
 import StatusCode from "../utils/status-code";
 
