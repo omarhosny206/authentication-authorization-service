@@ -14,7 +14,7 @@ export const login = async (loginRequest: ILoginRequest): Promise<ILoginResponse
     if (!storedUser) {
       throw ApiError.unauthorized("Bad Credentials: Invalid email");
     }
-
+    
     const hashedPassword = storedUser.password;
     const areEqualPasswords = await bcrypt.compare(password, hashedPassword);
 

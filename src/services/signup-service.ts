@@ -24,7 +24,7 @@ export const signup = async (user: IUser): Promise<IUser> => {
   }
 };
 
-export const signupByGoogle = async (user: IUser): Promise<IUser> => {
+export const signupByProviders = async (user: IUser): Promise<IUser> => {
   try {
     const { email } = user;
     const storedUser = await userService.getByEmail(email);
