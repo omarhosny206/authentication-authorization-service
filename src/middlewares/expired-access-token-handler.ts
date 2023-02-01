@@ -1,12 +1,13 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
+import { JwtPayload } from "jsonwebtoken";
+
+import IUser from "../interfaces/user-interface";
+import * as userService from "../services/user-service";
 import ApiError from "../utils/api-error";
 import * as jwt from "../utils/jwt";
-import * as userService from "../services/user-service";
-import { JwtPayload } from "jsonwebtoken";
-import IUser from "../interfaces/user-interface";
 import StatusCode from "../utils/status-code";
 
-export const regenerateAccessToken: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const regenerateTokens: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const refreshToken: string = req.body.refreshToken;
 
