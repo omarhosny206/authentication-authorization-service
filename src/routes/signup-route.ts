@@ -11,5 +11,6 @@ const router: Router = Router();
 router.post("/", validator.validate(signupSchema), signupController.signup);
 router.post("/google", validator.validate(signupByGoogleSchema), signupController.signupByProviders);
 router.post("/github", validator.validate(signupByGithubSchema), signupController.signupByProviders);
+router.post("/twitter", validator.validate(signupByGithubSchema), signupController.signupByProviders);
 
 export default router;

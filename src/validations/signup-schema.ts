@@ -8,7 +8,9 @@ const signupSchema: Joi.ObjectSchema<IUser> = Joi.object<IUser>({
   lastName: Joi.string().required(),
   email: Joi.string().email().lowercase().required(),
   password: Joi.string().min(8).required(),
-  role: Joi.string().valid("user", "admin").required(),
+  role: Joi.string()
+    .valid(...Role.ALL)
+    .required(),
 });
 
 export default signupSchema;
